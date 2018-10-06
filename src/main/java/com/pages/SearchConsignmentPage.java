@@ -19,6 +19,9 @@ public class SearchConsignmentPage implements IConstantValues{
     @FindBy(xpath="//button[@id='find-btn']")
     public WebElement findItem;
     
+    @FindBy(xpath="//strong[contains(text(),'Active Search')]")
+    public WebElement activeSearch;
+    
     @FindBy(xpath="//span[@ng-bind='errorMsg']")
     public WebElement errorMsg;
     
@@ -26,6 +29,11 @@ public class SearchConsignmentPage implements IConstantValues{
             //This initElements method will create all WebElements
             PageFactory.initElements(driver, this);
         }
+      
+      public String getActiveSearchText() {
+ 		 return activeSearch.getText();
+ 		  
+ 	 }
       
       public void navigateToSearchConsignment() {
                       searchConsignment.click();
@@ -43,7 +51,7 @@ public class SearchConsignmentPage implements IConstantValues{
           String text = errorMsg.getText();
           return text;
 }
-      @SuppressWarnings("finally")
+      /*@SuppressWarnings("finally")
 	public boolean errorMsgdisplayed() {
     	  boolean displayed = false;
     	  try {
@@ -56,6 +64,6 @@ public class SearchConsignmentPage implements IConstantValues{
 		}
     	  
     	  
-}
+}*/
 
 }
