@@ -59,6 +59,46 @@ public class ReceptacleSummary {
 	public WebElement preconDespatchID;
 	
 	//RESCON information fields
+	@FindBy(xpath="//span[contains(@id,'number-of-packages')]")
+	public WebElement resconNOP;
+	
+	@FindBy(xpath="//span[contains(@id,'receptacle-type')]")
+	public WebElement resconRt;
+	
+	@FindBy(xpath="//span[contains(@id,'receptacle-ID')]")
+	public WebElement resconRid;
+	
+	@FindBy(xpath="(//span[contains(@id,'receptacle-sub-class')])[2]")
+	public WebElement resconRsc;
+	
+	@FindBy(xpath="(//span[contains(@id,'despatch-document-indicator')])[2]")
+	public WebElement resconDdi;
+	
+	@FindBy(xpath="(//span[contains(@id,'receptacle-dangerous-goods-indicator')])[2]")
+	public WebElement resconRdgi;
+	
+	@FindBy(xpath="(//span[contains(@id,'receptacle-format-of-contents')])[2]")
+	public WebElement resconRfc;
+	
+	@FindBy(xpath="(//span[contains(@id,'receptacle-handling-class')])[2]")
+	public WebElement resconRhc;
+	
+	@FindBy(xpath="(//span[contains(@id,'receptacle-express-indicator')])[2]")
+	public WebElement resconRei;
+	
+	@FindBy(xpath="(//span[contains(@id,'exempt-items-indicator')])[2]")
+	public WebElement resconEii;
+	
+	@FindBy(xpath="//span[contains(@id,'receptacle-actual-weight')]")
+	public WebElement resconRaw;
+	
+	@FindBy(xpath="(//span[@id='receptacle-items'])[2]")
+	public WebElement resconRi;
+	
+	@FindBy(xpath="(//span[@id='Despatch-ID'])[2]")
+	public WebElement resconDid;
+	
+	
 	public ReceptacleSummary(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
