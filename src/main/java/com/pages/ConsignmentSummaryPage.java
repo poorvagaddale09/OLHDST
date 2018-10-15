@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.common.BaseTest;
@@ -18,7 +20,7 @@ import com.common.WebTable;
 import com.common.WebTable2;
 import com.common.XLUtilities;
 
-public class ConsignmentSummaryPage implements IConstantValues{
+public class ConsignmentSummaryPage extends BaseTest implements IConstantValues {
 	
 	@FindBy(xpath="//h3[contains(.,'Current Status: ')]/span")
 	public WebElement currentStatus;
@@ -176,6 +178,17 @@ public WebElement handover() {
 		return BaseTest.driver.findElement(By.xpath("//fieldset/legend/strong[text()='Handover Information']/../following-sibling::section"));
 	
 	}
+
+public WebElement EventID(String EventID2) throws EncryptedDocumentException, InvalidFormatException, IOException {
+	 System.out.println("ReceptacleID:"+EventID2);
+	  WebElement element=driver.findElement(By.xpath("//tbody/tr/td/a[text()='"+EventID2+"']"));	
+	  System.out.println("entered");
+	  WebDriverWait wait = new WebDriverWait(driver, 10);
+	  System.out.println("inside");
+	  wait.until(ExpectedConditions.visibilityOf(element));
+	  System.out.println("inside enter");
+	  return element;
+}
 	
 	public void verifyWebTableValues(WebElement element, String columnText,String columnText2,String columnText3,String rowText1,String rowText2,String rowText3 ) {
 		boolean result = false;

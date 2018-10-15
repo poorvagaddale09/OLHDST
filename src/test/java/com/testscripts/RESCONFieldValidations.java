@@ -30,6 +30,7 @@ public class RESCONFieldValidations extends BaseTest {
 	String RESCONFieldValidations="RESCONFieldValidations";
 	String ConsignmentNO="ConsignmentNO";
 	String resconinformation="resconinformation";
+	String eventinfotable="eventinfotable";
 	String RID="RID";
 	String NOP="NOP";
 	String Receptype="Receptype";
@@ -62,6 +63,14 @@ public class RESCONFieldValidations extends BaseTest {
 	String ri;
 	String did;
 	
+	String ce;
+	
+	String event;
+	String edt;
+	String ecs;
+	String ecf;
+	String el;
+	
 	
 	@BeforeClass
 	public void fetchValues() throws Exception {
@@ -76,6 +85,14 @@ public class RESCONFieldValidations extends BaseTest {
 	precon=new PreconDetailsPage(driver);
 	rs= new ReceptacleSummary(driver);
 	consignNo=ul.getvalueFromxcell(EXCEL_PATH, resconinformation, RESCONFieldValidations, ConsignmentNO);
+	
+	event=ul.getvalueFromxcell(EXCEL_PATH, eventinfotable, RESCONFieldValidations, "Event");
+	edt=ul.getvalueFromxcell(EXCEL_PATH, eventinfotable, RESCONFieldValidations, "EDT");
+	ecs=ul.getvalueFromxcell(EXCEL_PATH, eventinfotable, RESCONFieldValidations, "ECS");
+	ecf=ul.getvalueFromxcell(EXCEL_PATH, eventinfotable, RESCONFieldValidations, "ECF");
+	el=ul.getvalueFromxcell(EXCEL_PATH, eventinfotable, RESCONFieldValidations, "EL");
+	
+	ce=ul.getvalueFromxcell(EXCEL_PATH, resconinformation, RESCONFieldValidations, "CE");
 	
 	ReceptacleID=ul.getvalueFromxcell(EXCEL_PATH, resconinformation, RESCONFieldValidations, RID);
 	
@@ -105,9 +122,19 @@ public class RESCONFieldValidations extends BaseTest {
 		//toSwitchTab(2);
 		driver.get("http://npermg397:8090/CTS/#!/consignments/"+consignNo+"");
 		
+		//csp.verifyWebTableValues(csp.eventInfo(), "Event", "Event Date Time", "Consignment Status", "Count Flag", "Event Location", event, edt, ecs, ecf, el);
+		cf.click(csp.EventID(event),"EventID");
+		toSwitchTab(0);
+		System.out.println(edp.consignEvent.getText());
+		cf.verifyElement_text(edp.consignEvent, ce, "consignEvent");
+		
+		toSwitchTab(2);
+		
+		Thread.sleep(2000);
 		cf.click(csp.consignmentDetails, "consignmentDetails");
 		Thread.sleep(2000);
 		cf.click(cdp.ReceptacleID(ReceptacleID), "ReceptacleID");
+		Thread.sleep(2000);
 		System.out.println(rs.resconNOP+"resconNOP"+nop);
 		
 		cf.verifyElement_text(rs.resconNOP, nop, "resconNOP");
