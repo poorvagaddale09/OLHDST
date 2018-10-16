@@ -7,8 +7,16 @@
   <test thread-count="5" name="Chrome">
   <parameter name="browser" value="chrome"></parameter>
     <classes>
-      <!-- <class name="com.testscripts.NavigationOfPages"/> -->
+      <!-- <class name="com.testscripts.NavigationOfPages"/>
       <class name="com.testscripts.AllOntimeFull"/>
+      <class name="com.testscripts.AllLateDiscrepancy"/>
+      <class name="com.testscripts.AllUnknown"/> -->
+     <!--  <class name="com.testscripts.AllDelayed"/> -->
+     <!-- <class name="com.testscripts.CARDITFieldValidations"/> -->
+     <!-- <class name="com.testscripts.PRECONfieldValidations"/> -->
+     <!-- <class name="com.testscripts.RESCONFieldValidations"/> -->
+     <!-- <class name="com.testscripts.RESDITFieldValidations"/> -->
+     <class name="com.testscripts.OntimeDelayedLate"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
